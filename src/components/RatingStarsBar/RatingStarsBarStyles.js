@@ -74,12 +74,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   input: {
-    // width: 100,
-    // height: 40,
-    // margin: 12,
-    // borderWidth: 1,
-    // padding: 20,
-    // borderRadius: 8,
     borderColor: 'gray',
     width: 100,
     borderWidth: 1,
