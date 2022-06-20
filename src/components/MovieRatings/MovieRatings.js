@@ -10,29 +10,29 @@ import {
   TextInput,
   Alert,
 } from 'react-native';
-import styles from './RatingStarsBarStyles';
-import {setMovieRating} from '../../data/Api';
-import {Constants} from '../../utils/constants';
+import styles from './MovieRatingsStyles';
+import {setMovieRating} from '../../data/api';
+import {constants} from '../../utils/constants';
 
 const AlertMessage = textMsg => {
-  return Alert.alert(Constants.MESSAGE, textMsg, [
+  return Alert.alert(constants.MESSAGE, textMsg, [
     {
-      text: Constants.CANCEL,
-      onPress: () => console.log(Constants.CANCEL_PRESSED),
+      text: constants.CANCEL,
+      onPress: () => console.log(constants.CANCEL_PRESSED),
       style: 'cancel',
     },
-    {text: Constants.OK, onPress: () => console.log(Constants.OK_PRESSED)},
+    {text: constants.OK, onPress: () => console.log(constants.OK_PRESSED)},
   ]);
 };
 
-const RatingStarsBar = ({avgVote = 0, movieId}) => {
+const MovieRatings = ({avgVote = 0, movieId}) => {
   const [defaulRating, setDefaultRating] = useState(avgVote);
   const [maxRating] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
   const [modalVisible, setModalVisible] = useState(false);
   const [rateValue, setRateValue] = React.useState('');
 
-  const starImgFilled = Constants.START_IMG_FILLED;
-  const starImgBorder = Constants.START_IMG_BORDER;
+  const starImgFilled = constants.START_IMG_FILLED;
+  const starImgBorder = constants.START_IMG_BORDER;
 
   useEffect(() => {
     setDefaultRating(avgVote);
@@ -57,13 +57,13 @@ const RatingStarsBar = ({avgVote = 0, movieId}) => {
         } else {
           setDefaultRating(rateValue);
           setRateValue(rateValue);
-          AlertMessage(Constants.RATED_SUCCESSFULLY);
+          AlertMessage(constants.RATED_SUCCESSFULLY);
         }
       });
     }
   };
 
-  const RatingStars = () => {
+  const RatingStarsIcon = () => {
     return (
       <View style={styles.ratingBarContainer}>
         {maxRating.map((item, idx) => {
@@ -94,19 +94,19 @@ const RatingStarsBar = ({avgVote = 0, movieId}) => {
   return (
     <View style={styles.mainContainer}>
       <View style={styles.childView}>
-        <RatingStars />
+        <RatingStarsIcon />
       </View>
       <Text style={styles.text}>
-        {defaulRating} / {maxRating.length} {Constants.RATINGS}
+        {defaulRating} / {maxRating.length} {constants.RATINGS}
       </Text>
       <Button
         onPress={() => {
           setModalVisible(true);
           setRateValue('');
         }}
-        title={Constants.RATE}
+        title={constants.RATE}
         color="#841584"
-        accessibilityLabel={Constants.RATE_MOVIE}
+        accessibilityLabel={constants.RATE_MOVIE}
       />
       <Modal
         animationType="slide"
@@ -117,7 +117,7 @@ const RatingStarsBar = ({avgVote = 0, movieId}) => {
         }}>
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Text style={styles.modalText}>{Constants.RATE_MOVIE}</Text>
+            <Text style={styles.modalText}>{constants.RATE_MOVIE}</Text>
             <TextInput
               style={styles.input}
               onChangeText={text => {
@@ -131,12 +131,12 @@ const RatingStarsBar = ({avgVote = 0, movieId}) => {
               <Pressable
                 style={[styles.button, styles.buttonOpen]}
                 onPress={setNewRateValue}>
-                <Text style={styles.textStyle}>{Constants.RATE}</Text>
+                <Text style={styles.textStyle}>{constants.RATE}</Text>
               </Pressable>
               <Pressable
                 style={[styles.button, styles.buttonClose]}
                 onPress={() => setModalVisible(false)}>
-                <Text style={styles.textStyle}>{Constants.CLOSE}</Text>
+                <Text style={styles.textStyle}>{constants.CLOSE}</Text>
               </Pressable>
             </View>
           </View>
@@ -146,4 +146,4 @@ const RatingStarsBar = ({avgVote = 0, movieId}) => {
   );
 };
 
-export default RatingStarsBar;
+export default MovieRatings;

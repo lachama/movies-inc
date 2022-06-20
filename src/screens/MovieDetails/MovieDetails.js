@@ -1,13 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import {View, Text, Image, ScrollView} from 'react-native';
-import styles from './MovieDetailsScreenStyles';
-import RatingStarsBar from '../../components/RatingStarsBar/RatingStarsBar';
+import styles from './MovieDetailsStyles';
+import MovieRatings from '../../components/MovieRatings/MovieRatings';
 import Config from 'react-native-config';
 import {mapMovieDetails, mapMovieCredits} from '../../utils/utils';
-import {getMovieDetails, getMovieCredits} from '../../data/Api';
-import {Constants} from '../../utils/constants';
+import {getMovieDetails, getMovieCredits} from '../../data/api';
+import {constants} from '../../utils/constants';
 
-const MovieDetailsScreen = props => {
+const MovieDetails = props => {
   const movieId = props.route.params.id;
   const [movieDetails, setMovieDetails] = useState([]);
   const [movieCredits, setMovieCredits] = useState([]);
@@ -42,25 +42,25 @@ const MovieDetailsScreen = props => {
           />
         </View>
         <Text style={styles.releaseText}>
-          {Constants.RELEASED_ON} {movieDetails.release_date}
+          {constants.RELEASED_ON} {movieDetails.release_date}
         </Text>
         <Text style={styles.desc}>{movieDetails.overview}</Text>
         <View>
-          <Text style={styles.castTitle}>{Constants.CAST}: </Text>
+          <Text style={styles.castTitle}>{constants.CAST}: </Text>
           {movieCredits.map((cast, idx) => {
             return (
               <View style={styles.castList} key={idx}>
                 <Text style={styles.cast}>
-                  {idx + 1}. {cast.name} {Constants.AS} {cast.character}
+                  {idx + 1}. {cast.name} {constants.AS} {cast.character}
                 </Text>
               </View>
             );
           })}
         </View>
-        <RatingStarsBar avgVote={movieDetails.vote_average} movieId={movieId} />
+        <MovieRatings avgVote={movieDetails.vote_average} movieId={movieId} />
       </ScrollView>
     </View>
   );
 };
 
-export default MovieDetailsScreen;
+export default MovieDetails;

@@ -1,6 +1,6 @@
 import Config from 'react-native-config';
 
-const getMovies = async () => {
+const getNowPlayingMovies = async () => {
   try {
     const response = await fetch(
       `${Config.THE_MOVIEDB_MOVIES_URL}${Config.API_KEY}`,
@@ -54,4 +54,4 @@ const setMovieRating = async (rateValue, movieId) => {
   }
 };
 
-export {getMovies, getMovieDetails, getMovieCredits, setMovieRating};
+export {getNowPlayingMovies, getMovieDetails, getMovieCredits, setMovieRating};

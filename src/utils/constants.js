@@ -1,4 +1,4 @@
-export const Constants = {
+export const constants = {
   APP_TITLE: 'The Movie Database',
   SCREEN_DETAIL_TITLE: 'Movie Details',
   CANCEL: 'Cancel',

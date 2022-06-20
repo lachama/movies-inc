@@ -1,29 +1,29 @@
 import React, {useState, useEffect} from 'react';
 import {View, Text, FlatList} from 'react-native';
-import styles from './MoviesListScreenStyles';
+import styles from './PlayingNowStyles';
 import MovieListItem from '../../components/MoviesListItem/MovieListItem';
 import MoviesListItemSeparator from '../../components/MoviesListItemSeparator/MovieListItemSeparator';
 import {mapMovieData} from '../../utils/utils';
-import {getMovies} from '../../data/Api';
-import {Constants} from '../../utils/constants';
+import {getNowPlayingMovies} from '../../data/api';
+import {constants} from '../../utils/constants';
 
-const MoviesListScreen = ({navigation}) => {
-  const [moviesList, setMoviesList] = useState([]);
+const PlayingNowScreen = ({navigation}) => {
+  const [playingNowList, setPlayingNowList] = useState([]);
 
   useEffect(() => {
-    const buildMovieList = async () => {
-      const moviesData = await getMovies();
+    const buildPlayingNowList = async () => {
+      const moviesData = await getNowPlayingMovies();
       const mappedData = mapMovieData(moviesData?.results || []);
-      setMoviesList(mappedData);
+      setPlayingNowList(mappedData);
     };
-    buildMovieList();
+    buildPlayingNowList();
   }, []);
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{Constants.STREAM_NOW}</Text>
+      <Text style={styles.title}>{constants.STREAM_NOW}</Text>
       <FlatList
-        data={moviesList}
+        data={playingNowList}
         renderItem={({item}) => (
           <MovieListItem navigation={navigation} movie={item} />
         )}
@@ -34,4 +34,4 @@ const MoviesListScreen = ({navigation}) => {
   );
 };
 
-export default MoviesListScreen;
+export default PlayingNowScreen;
