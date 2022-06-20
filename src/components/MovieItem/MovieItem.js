@@ -1,9 +1,9 @@
 import React from 'react';
 import {View, Text, Pressable, Image} from 'react-native';
-import styles from './MovieListItemStyles';
+import styles from './MovieItemStyles';
 import Config from 'react-native-config';
 
-const MovieListItem = React.memo(({navigation, movie}) => {
+const MovieItem = React.memo(({navigation, movie}) => {
   const onMoviePress = () => {
     navigation.navigate('MovieDetails', {id: movie.id});
   };
@@ -26,4 +26,4 @@ const MovieListItem = React.memo(({navigation, movie}) => {
   );
 });
 
-export default MovieListItem;
+export default MovieItem;

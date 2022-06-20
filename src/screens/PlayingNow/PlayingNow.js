@@ -1,13 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import {View, Text, FlatList} from 'react-native';
 import styles from './PlayingNowStyles';
-import MovieListItem from '../../components/MoviesListItem/MovieListItem';
-import MoviesListItemSeparator from '../../components/MoviesListItemSeparator/MovieListItemSeparator';
+import MovieListItem from '../../components/MovieItem/MovieItem';
+import MovieItemSeparator from '../../components/MovieItemSeparator/MovieItemSeparator';
 import {mapMovieData} from '../../utils/utils';
 import {getNowPlayingMovies} from '../../data/api';
 import {constants} from '../../utils/constants';
 
-const PlayingNowScreen = ({navigation}) => {
+const PlayingNow = ({navigation}) => {
   const [playingNowList, setPlayingNowList] = useState([]);
 
   useEffect(() => {
@@ -27,11 +27,11 @@ const PlayingNowScreen = ({navigation}) => {
         renderItem={({item}) => (
           <MovieListItem navigation={navigation} movie={item} />
         )}
-        ItemSeparatorComponent={MoviesListItemSeparator}
+        ItemSeparatorComponent={MovieItemSeparator}
         keyExtractor={item => item.id}
       />
     </View>
   );
 };
 
-export default PlayingNowScreen;
+export default PlayingNow;

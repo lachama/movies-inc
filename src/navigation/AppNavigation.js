@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import PlayingNowScreen from '../screens/PlayingNow/PlayingNow';
+import PlayingNow from '../screens/PlayingNow/PlayingNow';
 import MovieDetails from '../screens/MovieDetails/MovieDetails';
 import {constants} from '../utils/constants';
 
@@ -12,7 +12,7 @@ const MoviesStackNavigation = () => {
     <Stack.Navigator>
       <Stack.Screen
         name="MoviesList"
-        component={PlayingNowScreen}
+        component={PlayingNow}
         options={{title: constants.APP_TITLE}}
       />
       <Stack.Screen
