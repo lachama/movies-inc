@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text, Pressable, Image} from 'react-native';
 import styles from './MovieItemStyles';
-import Config from 'react-native-config';
+import config from '../../config/config';
 
 const MovieItem = React.memo(({navigation, movie}) => {
   const onMoviePress = () => {
@@ -18,7 +18,7 @@ const MovieItem = React.memo(({navigation, movie}) => {
         <Image
           style={styles.img}
           source={{
-            uri: `${Config.IMAGE_BASE_URL}${movie.poster_path}`,
+            uri: `${config.IMAGE_BASE_URL}${movie.poster_path}`,
           }}
         />
       </View>

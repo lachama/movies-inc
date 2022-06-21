@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {View, Text, Image, ScrollView} from 'react-native';
 import styles from './MovieDetailsStyles';
 import MovieRatings from '../../components/MovieRatings/MovieRatings';
-import Config from 'react-native-config';
+import config from '../../config/config';
 import {mapMovieDetails, mapMovieCredits} from '../../utils/utils';
 import {getMovieDetails, getMovieCredits} from '../../data/api';
 import {constants} from '../../utils/constants';
@@ -37,7 +37,7 @@ const MovieDetails = props => {
           <Image
             style={styles.img}
             source={{
-              uri: `${Config.IMAGE_BASE_URL}${movieDetails.poster_path}`,
+              uri: `${config.IMAGE_BASE_URL}${movieDetails.poster_path}`,
             }}
           />
         </View>
