@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  StyleSheet,
-  SafeAreaView,
-  StatusBar,
-  useColorScheme,
-} from 'react-native';
+import {StyleSheet, SafeAreaView} from 'react-native';
 import AppContainer from './src/navigation/AppNavigation';
 
 const styles = StyleSheet.create({
@@ -18,11 +13,8 @@ const styles = StyleSheet.create({
 });
 
 const App = () => {
-  const isDarkMode = useColorScheme() === 'dark';
-
   return (
     <SafeAreaView style={styles.container}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <AppContainer />
     </SafeAreaView>
   );

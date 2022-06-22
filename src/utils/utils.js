@@ -31,7 +31,6 @@ const mapMovieDetails = data => {
     return [];
   }
   const mappedData = {
-    genres: data?.genres?.map(gender => gender.name),
     original_title: data?.original_title,
     overview: data?.overview,
     poster_path: data?.poster_path,

@@ -19,4 +19,8 @@ export const constants = {
   AS: 'as',
   CAST: 'Cast',
   STREAM_NOW: 'Movies Streaming now',
+  MOVIE_TITLE: 'Movie Title',
+  AVARAGE_VOTE: 'Avarage Vote',
+  RELEASE_DATE: 'Release Date',
+  ID: 'Id',
 };
