@@ -1,4 +1,5 @@
 import config from '../config/config';
+global.fetch = require('node-fetch');
 
 const getNowPlayingMovies = async () => {
   try {
